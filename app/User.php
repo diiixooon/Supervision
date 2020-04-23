@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function dicsussions(){
         return $this->hasMany('App\Discussion');
     }
+    public function student()
+    {
+        return $this->belongsTo('App\Supervisor');
+    }
 }

@@ -49,5 +49,10 @@ class Supervisor extends Authenticatable
         return $this->hasMany('App\Discussion');
     }
 
+    public function sv()
+    {
+        return $this->hasMany('App\User');
+    }
+
    
 }

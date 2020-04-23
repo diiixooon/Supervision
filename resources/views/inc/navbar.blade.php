@@ -19,19 +19,32 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
+            {{-- Supervisor only --}}
             <ul class="nav navbar-nav">
+                @if (Auth::guard('supervisor')->check())
                 <li class="nav-item">
                     <a href="/studentlists">Student List</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/profile">Profile</a>
+                </li>
+                @endif
+
+                {{-- Student only --}}
+                @if (Auth::guard('web')->check())
+                <li class="nav-item">
+                    <a href="/project">Project</a>
+                </li>
+                @endif
+                
+                                
                 <li class="nav-item">
                     <a href="/dash">Approval</a>
                 </li>
                 <li class="nav-item">
                     <a href="/posts">Discussion</a>
                 </li>
-                <li class="nav-item">
-                    <a href="/project">Project</a>
-                </li>
+                
             </ul>
 
             <!-- Right Side Of Navbar -->

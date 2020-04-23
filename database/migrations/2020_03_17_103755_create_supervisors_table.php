@@ -15,8 +15,11 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('super_matrik_id')->default('0');
             $table->string('name');
+            $table->string('student_id')->default('0');
             $table->string('email')->unique();
+            $table->string('level')->default('1');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

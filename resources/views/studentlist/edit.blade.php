@@ -8,7 +8,11 @@
     {!! Form::open(['action' => ['StudentlistController@update', $studentlist->id], 'method' => 'STUDENTLISTS']) !!}
     <div class="form-group">
       {{Form::label('matrices_number', 'Matrices Number')}}
-      {{Form::text('matrices_number', $studentlist->matrices_number, ['class' => 'form-control', 'placeholder' => 'eg : A123456'])}}
+      <select name="student" id="student">
+        @foreach ($user as $userlist)
+        <option value="{{$userlist->matrik_id}}">{{$userlist->matrik_id}}|{{$userlist->name}}</option>
+        @endforeach
+    </select>
     </div>
 
     <div class="form-group">

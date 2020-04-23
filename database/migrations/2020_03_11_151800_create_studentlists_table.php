@@ -16,6 +16,7 @@ class CreateStudentlistsTable extends Migration
         Schema::create('studentlists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('matrices_number');
+            $table->string('super_matrik_id');
             $table->string('name');
             $table->string('project_title');
             $table->string('description');

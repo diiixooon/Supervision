@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Studentlist;
 use DB;
+use Auth;
+use App\User;
+use App\Approval;
+use App\Supervisor;
 
 class StudentlistController extends Controller
 {
@@ -18,7 +22,9 @@ class StudentlistController extends Controller
     {
         //$studentlists = Studentlist::all();
         //return Studentlist::where('name', 'Yip Wai Jun')->get();
-        $studentlists = Studentlist::orderBy('name','asc')->paginate(10);
+        $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
+        // dd($sv->super_matrik_id);
+        $studentlists = Studentlist::where('super_matrik_id','=', $sv->super_matrik_id)->orderBy('name','asc')->paginate(10);
         return view('studentlist.index')->with('studentlist', $studentlists);
     }
 
@@ -29,7 +35,8 @@ class StudentlistController extends Controller
      */
     public function create()
     {
-        return view('studentlist.create');
+        $user = User::get();
+        return view('studentlist.create')->with('user', $user);
     }
 
     /**
@@ -41,19 +48,29 @@ class StudentlistController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'matrices_number' => 'required',
             'name' => 'required',
             'project_title' => 'required',
             'description' => 'required'
         ]);
-        
+        //
+        $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
         //Create Student
         $studentlist = new Studentlist;
-        $studentlist->matrices_number = $request->input('matrices_number');
+        // dd($request->input('student'));
+        $studentlist->matrices_number = $request->input('student');
+        // dd($request->input('student'));
         $studentlist->name = $request->input('name');
+        // dd($sv->super_matrik_id);
+        $studentlist->super_matrik_id = $sv->super_matrik_id;
         $studentlist->project_title = $request->input('project_title');
         $studentlist->description = $request->input('description');
         $studentlist->save();
+
+        $approval = new Approval;
+        $approval->matrik_id = $request->input('student');
+        $approval->save();
+
+       
 
         return redirect('/studentlists')->with('success', 'Student Created');
         }
@@ -79,8 +96,13 @@ class StudentlistController extends Controller
      */
     public function edit($id)
     {
+        $user = User::get();
         $studentlist = Studentlist::find($id);
-        return view('studentlist.edit')->with('studentlist', $studentlist);
+        $data = array(
+            'user' => $user,
+            'studentlist' => $studentlist,
+        );
+        return view('studentlist.edit')->with($data);
     }
 
     /**

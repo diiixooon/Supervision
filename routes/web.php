@@ -20,7 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/', 'PagesController@index');
+Route::get('/profile','StudentController@profile');
+Route::get('profile/edit/{id}', 'StudentController@edit');
+Route::post('profile/edit/{id}','StudentController@editform');
 
+Route::get('profile/create','StudentController@create');
 //Student List
 Route::resource('studentlists', 'StudentlistController');
 
@@ -36,6 +40,9 @@ Route::get('/status', function () {
 
 Route::get('/discussion','CommentsController@create');
 Route::post('/comment','CommentsController@store');
+
+Route::get('/upload', 'ApprovalController@form');
+Route::post('/upload', 'ApprovalController@upload');
 
 Route::get('/dash', 'CommentsController@display');
 
