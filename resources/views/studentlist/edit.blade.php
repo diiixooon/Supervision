@@ -23,7 +23,7 @@
 
       <div class="form-group">
         {{Form::label('description', 'Description')}}
-        {{Form::textarea('description', $studentlist->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
+        {{Form::textarea('description', $studentlist->description, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Description'])}}
       </div>
       {{Form::hidden('_method', 'PUT')}}
       {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}

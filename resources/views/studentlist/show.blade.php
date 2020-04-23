@@ -9,7 +9,7 @@
     <div>Name : {{$studentlist->name}}</div>
     <div>Matrices Number :  {{$studentlist->matrices_number}}</div>
     <div>Project Title :  {{$studentlist->project_title}}</div>
-    <div>Description : {{$studentlist->description}}</div>
+    <div>Description : {!!$studentlist->description!!}</div>
    </div>     
    <hr>
 <a href="/studentlists/{{$studentlist->id}}/edit" class="btn btn-primary">Edit</a>

@@ -39,6 +39,8 @@ Route::post('/comment','CommentsController@store');
 
 Route::get('/dash', 'CommentsController@display');
 
+Route::resource('posts', 'PostsController');
+
 // Supervisor
 Route::prefix('supervisor')->group(function(){
     Route::get('/login','Auth\SupervisorLoginController@showLoginForm')->name('supervisor.login');
@@ -50,4 +52,5 @@ Route::prefix('supervisor')->group(function(){
     Route::get('/password/reset', 'Auth\SupervisorForgotPasswordController@showLinkRequestForm')->name('supervisor.password.request');
     Route::post('/password/reset', 'Auth\SupervisorResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\SupervisorResetPasswordController@showResetForm')->name('supervisor.password.reset');
+
 });

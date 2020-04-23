@@ -27,7 +27,7 @@
                     <a href="/dash">Approval</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/discussion">Discussion</a>
+                    <a href="/posts">Discussion</a>
                 </li>
                 <li class="nav-item">
                     <a href="/project">Project</a>
