@@ -15,7 +15,7 @@
         {{$posts->links()}}
         <a href="/posts/create" class="btn btn-primary">Create</a>
     @else
-            <p>No discussions found</p>
-            <a href="/posts/create" class="btn btn-primary">Create</a>
+        <p>No discussions found</p>
+        <a href="/posts/create" class="btn btn-primary">Create</a>
     @endif
 @endsection

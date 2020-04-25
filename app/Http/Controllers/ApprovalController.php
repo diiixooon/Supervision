@@ -38,16 +38,13 @@ class ApprovalController extends Controller
         }
 
         $user = User::find(Auth::user()->id);
-        // dd($user);
-        $approval = Approval::where('matrik_id', '=' , $user->matrik_id)->get();
-        // dd($approval);
-        $approval = $user->matrik_id;
+        $approval = Approval::find(Auth::user()->id);
+        $approval->matrik_id = $user->matrik_id;
         switch($request->input('document'))
         {
             case '1':
                 $approval->d1 = true;
                 $approval->d1_document = $fypdocumentNameToStore;
-                
             break;
             case '2':
                 $approval->d2 = true;

@@ -33,18 +33,10 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/status', function () {
-    $comments=Comment::all();
-    return view('front')->with('comments',$comments);
-});
-
-Route::get('/discussion','CommentsController@create');
-Route::post('/comment','CommentsController@store');
+Route::get('discussion', 'CommentsController')
 
 Route::get('/upload', 'ApprovalController@form');
 Route::post('/upload', 'ApprovalController@upload');
-
-Route::get('/dash', 'CommentsController@display');
 
 Route::resource('posts', 'PostsController');
 

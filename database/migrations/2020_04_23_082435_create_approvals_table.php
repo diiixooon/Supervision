@@ -17,25 +17,25 @@ class CreateApprovalsTable extends Migration
             $table->increments('id');
             $table->string('matrik_id');
 
-            $table->tinyInteger('d1')->default(false);
+            $table->boolean('d1')->default(false);
             $table->string('d1_document')->default('empty');
             
-            $table->tinyInteger('d2')->default(false);
+            $table->boolean('d2')->default(false);
             $table->string('d2_document')->default('empty');
 
-            $table->tinyInteger('d3')->default(false);
+            $table->boolean('d3')->default(false);
             $table->string('d3_document')->default('empty');
 
-            $table->tinyInteger('d4')->default(false);
+            $table->boolean('d4')->default(false);
             $table->string('d4_document')->default('empty');
 
-            $table->tinyInteger('d5')->default(false);
+            $table->boolean('d5')->default(false);
             $table->string('d5_document')->default('empty');
 
-            $table->tinyInteger('d6')->default(false);
+            $table->boolean('d6')->default(false);
             $table->string('d6_document')->default('empty');
 
-            $table->tinyInteger('d7')->default(false);
+            $table->boolean('d7')->default(false);
             $table->string('d7_document')->default('empty');
 
             $table->timestamps();

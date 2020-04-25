@@ -39,7 +39,7 @@
                 
                                 
                 <li class="nav-item">
-                    <a href="/dash">Approval</a>
+                    <a href="/upload">Approval</a>
                 </li>
                 <li class="nav-item">
                     <a href="/posts">Discussion</a>
