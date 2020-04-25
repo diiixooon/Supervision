@@ -17,7 +17,10 @@ class StudentlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('auth:supervisor');
+    }
     public function index()
     {
         //$studentlists = Studentlist::all();
@@ -69,6 +72,14 @@ class StudentlistController extends Controller
         $approval = new Approval;
         $approval->matrik_id = $request->input('student');
         $approval->save();
+
+        $loopuser = User::where('matrik_id','=', $request->input('student'))->get();
+        foreach ($loopuser as $key => $list) {
+            $userid = $list->id;
+        }
+        $user = User::find($userid);
+        $user->super_matrik_id = $sv->super_matrik_id;
+        $user->update();
 
        
 

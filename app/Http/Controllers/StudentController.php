@@ -39,6 +39,26 @@ class StudentController extends Controller
 
         return redirect('/profile')->with('success', 'Update success');
     }
-
+    public function userprofile()
+    {
+        $user = User::find(Auth::guard('web')->user()->id);
+        $data = array(
+            'user' => $user,
+        );
+        return view('profile.userprofile')->with($data);
+    }
+    public function useredit($id)
+    {
+        $user = User::find($id);
+        return view('profile.userprofileedit')->with('user',$user);
+    }
+    public function userprofileedit($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->matrik_id = $request->input('matrik_number');
+        $user->save();
+        return redirect('/userprofile')->with('success', 'Update success');
+    }
 
 }

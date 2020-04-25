@@ -35,6 +35,9 @@
                 <li class="nav-item">
                     <a href="/project">Project</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/userprofile">Profile</a>
+                </li>
                 @endif
                 
                                 
@@ -61,6 +64,9 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                @if (Auth::guard('web')->check())
+                                    <a href="/userprofile">profile</a>
+                                @endif
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
