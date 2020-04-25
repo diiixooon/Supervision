@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Approval;
+use App\Studentlist;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -80,5 +81,22 @@ class ApprovalController extends Controller
     public function form()
     {
         return view('comment.upload');
+    }
+    public function svtable()
+    {
+        $studentlist = Studentlist::get();
+        $data = array(
+            'studentlist' => $studentlist,
+        );
+        return view('comment.approval')->with($data);
+    }
+    public function documentprofile($matrik_id)
+    {
+        $approval = Approval::where('matrik_id', '=', $matrik_id)->get();
+        // dd($approval);
+        $data = array(
+            'approval' => $approval
+        )
+        return view('comment.judge')->with($data);
     }
 }

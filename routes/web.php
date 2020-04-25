@@ -45,6 +45,11 @@ Route::prefix('discussion')->group(function(){
     Route::post('/create', 'CommentController@store');
 });
 
+Route::prefix('approve')->group(function(){
+    Route::get('/','ApprovalController@svtable');
+    Route::get('/{matrik_id}/view', 'ApprovalController@documentprofile');
+});
+
 Route::get('/upload', 'ApprovalController@form');
 Route::post('/upload', 'ApprovalController@upload');
 
