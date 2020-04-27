@@ -41,6 +41,9 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('discussion')->group(function(){
     Route::get('/', 'CommentController@discussion');
+    Route::get('/{id}/{student_id}','CommentController@post');
+    Route::post('/{id}/{student_id}','CommentController@storecomment');
+
     Route::get('/create','CommentController@create');
     Route::post('/create', 'CommentController@store');
 });

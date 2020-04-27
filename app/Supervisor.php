@@ -53,6 +53,9 @@ class Supervisor extends Authenticatable
     {
         return $this->hasMany('App\User');
     }
-
+    public function supermatriksv()
+    {
+        $this->belongsTo('App\Supervisor');
+    }
    
 }

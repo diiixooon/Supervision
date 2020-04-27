@@ -96,7 +96,7 @@ class ApprovalController extends Controller
         // dd($approval);
         $data = array(
             'approval' => $approval
-        )
+        );
         return view('comment.judge')->with($data);
     }
 }

@@ -44,4 +44,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Supervisor');
     }
+    public function matrikstudent()
+    {
+        $this->belongsTo('App\Discussion');
+    }
 }

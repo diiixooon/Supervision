@@ -6,7 +6,7 @@
         <h2>
             Name : {{$user->name}}
             <br>
-            Supervisor Matrik:
+            Student Matrik:
             {{$user->matrik_id}}
         </h2>
     </div>
