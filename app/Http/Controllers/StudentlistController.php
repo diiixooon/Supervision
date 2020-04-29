@@ -19,7 +19,11 @@ class StudentlistController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:supervisor');
+        if(Auth::guard('supervisor')->check())
+        {
+            $this->middleware('auth:supervisor');
+
+        }
     }
     public function index()
     {

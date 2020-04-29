@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Supervisor;
+
 class StudentController extends Controller
 {
     public function __construct()

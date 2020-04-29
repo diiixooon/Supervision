@@ -63,48 +63,43 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @if (Auth::guest())
-                    {{-- @if (Auth::guard('web')->check())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @elseif(Auth::guard('supervisor')->check())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @endif --}}
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                @guest()
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        @auth('web')
+                          {{ Auth::user()->name }} <span class="caret"></span>   
+                        @endauth
+                        @auth('supervisor')
+                          {{ Auth::guard('supervisor')->user()->name }} <span class="caret"></span>
+                            
+                        @endauth
+                       
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
                             @if (Auth::guard('web')->check())
-                                {{ Auth::user()->name }} <span class="caret"></span>   
+                                <a href="/userprofile">profile</a>
                             @endif
                             @if (Auth::guard('supervisor')->check())
-                                {{ Auth::guard('supervisor')->user()->name }} <span class="caret"></span>
+                                
                             @endif
-                        </a>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                @if (Auth::guard('web')->check())
-                                    <a href="/userprofile">profile</a>
-                                @endif
-                                @if (Auth::guard('supervisor')->check())
-                                    
-                                @endif
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
+                @endguest
             </ul>
         </div>
     </div>
