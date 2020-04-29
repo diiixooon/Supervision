@@ -25,10 +25,12 @@ Route::get('/userprofile', 'StudentController@userprofile');
 Route::get('/userprofile/edit/{id}', 'StudentController@useredit');
 Route::post('/userprofile/edit/{id}', 'StudentController@userprofileedit');
 
-Route::get('/location','StudentController@location');
 Route::get('/profile','StudentController@profile');
 Route::get('profile/edit/{id}', 'StudentController@edit');
 Route::post('profile/edit/{id}','StudentController@editform');
+
+Route::get('/location','StudentController@location');
+
 
 Route::get('profile/create','StudentController@create');
 
@@ -70,5 +72,6 @@ Route::prefix('supervisor')->group(function(){
     Route::get('/password/reset', 'Auth\SupervisorForgotPasswordController@showLinkRequestForm')->name('supervisor.password.request');
     Route::post('/password/reset', 'Auth\SupervisorResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\SupervisorResetPasswordController@showResetForm')->name('supervisor.password.reset');
+
 
 });
