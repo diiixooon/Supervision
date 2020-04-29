@@ -15,12 +15,16 @@
 </head>
 <body>
     <div id="app">
-    @include('inc.navbar')
-    <div class="container">
-        @include('inc.messages')
-        @yield('content')
+        @include('inc.navbar')
+    
+        <div class="container">
+            @include('inc.messages')
+            @yield('content')
+        </div>
     </div>
-    </div>
+    @yield('location')
+
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

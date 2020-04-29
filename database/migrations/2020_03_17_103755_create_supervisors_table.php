@@ -21,6 +21,8 @@ class CreateSupervisorsTable extends Migration
             $table->string('email')->unique();
             $table->string('level')->default('1');
             $table->string('password');
+            $table->string('lat')->default('0');
+            $table->string('lng')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

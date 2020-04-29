@@ -12,9 +12,16 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/home') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+            @if (Auth::guard('web')->check())
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            @elseif(Auth::guard('supervisor')->check())
+                <a class="navbar-brand" href="{{ url('/supervisor') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            @endif
+            
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -28,44 +35,55 @@
                 <li class="nav-item">
                     <a href="/profile">Profile</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/approve">Approval</a>
+                </li>
                 @endif
 
                 {{-- Student only --}}
                 @if (Auth::guard('web')->check())
                 <li class="nav-item">
-                    <a href="/project">Project</a>
-                </li>
-                <li class="nav-item">
                     <a href="/userprofile">Profile</a>
                 </li>
-                @endif
-                
-                                
                 <li class="nav-item">
                     <a href="/upload">Approval</a>
                 </li>
+                @endif
+                
+                @if (Auth::guard('web')->check() || Auth::guard('supervisor')->check())
+                
                 <li class="nav-item">
-                    <a href="/posts">Discussion</a>
+                    <a href="/discussion">Discussion</a>
                 </li>
+                @endif
+                
                 
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @if (Auth::guest())
+                @if (!Auth::guard('supervisor')->check() || !Auth::guard('supervisor')->check())
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            @if (Auth::guard('web')->check())
+                                {{ Auth::user()->name }} <span class="caret"></span>   
+                            @endif
+                            @if (Auth::guard('supervisor')->check())
+                                {{ Auth::guard('supervisor')->user()->name }} <span class="caret"></span>
+                            @endif
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 @if (Auth::guard('web')->check())
                                     <a href="/userprofile">profile</a>
+                                @endif
+                                @if (Auth::guard('supervisor')->check())
+                                    
                                 @endif
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

@@ -155,4 +155,5 @@ class StudentlistController extends Controller
         $studentlist->delete();
         return redirect('/studentlists')->with('success', 'Student Removed');
     }
+   
 }

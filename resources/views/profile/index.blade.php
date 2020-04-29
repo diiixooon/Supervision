@@ -8,6 +8,10 @@
             <br>
             Supervisor Matrik:
             {{$sv->super_matrik_id}}
+            <br>
+            SV lat: {{$sv->lat}}
+            <br>
+            SV lng : {{$sv->lng}}
         </h2>
         
     </div>

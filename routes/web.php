@@ -25,7 +25,7 @@ Route::get('/userprofile', 'StudentController@userprofile');
 Route::get('/userprofile/edit/{id}', 'StudentController@useredit');
 Route::post('/userprofile/edit/{id}', 'StudentController@userprofileedit');
 
-
+Route::get('/location','StudentController@location');
 Route::get('/profile','StudentController@profile');
 Route::get('profile/edit/{id}', 'StudentController@edit');
 Route::post('profile/edit/{id}','StudentController@editform');
@@ -46,6 +46,7 @@ Route::prefix('discussion')->group(function(){
 
     Route::get('/create','CommentController@create');
     Route::post('/create', 'CommentController@store');
+    Route::delete('/{comment_id}','CommentController@deletecomment');
 });
 
 Route::prefix('approve')->group(function(){

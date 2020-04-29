@@ -11,34 +11,76 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        if(Auth::guard('web')->check())
+        {
+            $this->middleware('guest:web');
+        }
+        elseif (Auth::guard('supervisor')->check())
+        {
+            $this->middleware('guest:supervisor');
+        }
+    }
     public function discussion()
     {
-        $user = User::find(Auth::user()->id);
-        $discuss  = Discussion::where('student_id','=',$user->matrik_id)->where('supervisor_id','=',$user->super_matrik_id)->get();
-        $data = array(
-            'user' => $user,
-            'discuss' => $discuss,
-        );
+        if(Auth::guard('web')->check())
+        {
+            $user = User::find(Auth::user()->id);
+            $discuss  = Discussion::where('student_id','=',$user->matrik_id)->where('supervisor_id','=',$user->super_matrik_id)->get();
+            $data = array(
+                'user' => $user,
+                'discuss' => $discuss,
+            );
+        }
+        elseif (Auth::guard('supervisor')->check())
+        {
+            $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
+            $discuss = Discussion::where('supervisor_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
+            $data = array(
+                'sv' => $sv,
+                'discuss' => $discuss,
+            );
+        }
+        
+       
         return view('comment.discussion')->with($data);
     }
     public function create()
     {
-        return view('comment.create');
+        $user = User::get();
+        return view('comment.create')->with('user', $user);
     }
     public function store(Request $request)
     {
-        $user = User::find(Auth::user()->id);
         $this->validate($request,[
             'subject' => 'required',
             'body' => 'required'
         ]);
 
-        $discuss = new Discussion;
-        $discuss->student_id = $user->matrik_id;
-        $discuss->supervisor_id = $user->super_matrik_id;
-        $discuss->body = $request->input('body');
-        $discuss->subject = $request->input('subject');
-        $discuss->save();
+        if(Auth::guard('supervisor')->check())
+        {
+            $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
+            // dd($sv);
+            $discuss = new Discussion;
+            $discuss->student_id = $request->input('student');
+            $discuss->supervisor_id = $sv->super_matrik_id;
+            $discuss->body = $request->input('body');
+            $discuss->subject = $request->input('subject');
+            $discuss->save();
+        }
+        else
+        {
+            $user = User::find(Auth::user()->id);
+            $discuss = new Discussion;
+            $discuss->student_id = $user->matrik_id;
+            $discuss->supervisor_id = $user->super_matrik_id;
+            $discuss->body = $request->input('body');
+            $discuss->subject = $request->input('subject');
+            $discuss->save();
+        }
+       
+      
         
         return redirect('/discussion')->with('success','Discussion created');
     }
@@ -68,5 +110,11 @@ class CommentController extends Controller
 
         return back();
         
+    }
+    public function deletecomment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return back();
     }
 }
