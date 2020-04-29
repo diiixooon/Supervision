@@ -89,7 +89,7 @@ class CommentController extends Controller
         // dd($discussion_id);
         $discuss = Discussion::find($id);
         // dd($discuss);
-        $comment = Comment::where('student_id' ,'=', $student_id)->get();
+        $comment = Comment::where('discussion_id','=',$discuss->id)->get();
         // dd($comment);
         $data = array(
             'discuss' => $discuss,
@@ -103,8 +103,18 @@ class CommentController extends Controller
         $comment =  new Comment;
         $discuss = Discussion::find($id);
         $comment->discussion_id = $discuss->id;
-        $comment->student_id = $discuss->student_id;
-        $comment->supervisor_id = $discuss->supervisor_id;
+        if(Auth::guard('supervisor')->check())
+        {
+            $comment->commenter_id = Auth::guard('supervisor')->user()->super_matrik_id;
+            
+            // dd($comment->commenter_id);
+            
+        }
+        else
+        {
+            $comment->commenter_id = Auth::guard('web')->user()->matrik_id;
+            // dd($comment->commenter_id);
+        }
         $comment->comment = $request->input('comment');
         $comment->save();
 

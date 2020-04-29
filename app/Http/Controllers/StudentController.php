@@ -8,6 +8,18 @@ use App\User;
 use App\Supervisor;
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        if(Auth::guard('web')->check())
+        {
+            $this->middleware('auth:supervisor', ['only'=>['profile','edit','editform']]);
+        }
+        if(Auth::guard('supervisor')->check())
+        {
+            
+            $this->middleware('auth:web', ['only'=>['userprofile','useredit','userprofileedit']]);
+        }
+    }
     //need to move to supervisor
     public function profile()
     {
