@@ -54,6 +54,8 @@ class StudentController extends Controller
 
         return redirect('/profile')->with('success', 'Update success');
     }
+    //supervisor end
+
     public function userprofile()
     {
         $user = User::find(Auth::guard('web')->user()->id);

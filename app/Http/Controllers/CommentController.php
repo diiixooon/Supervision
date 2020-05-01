@@ -177,8 +177,7 @@ class CommentController extends Controller
                 $row->id,
                 [
                     'color' => $row->color,
-                ]
-                
+                ]      
             ); 
         }
         $calendar = \Calendar::addEvents($calendar);
