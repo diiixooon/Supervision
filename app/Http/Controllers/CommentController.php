@@ -106,6 +106,7 @@ class CommentController extends Controller
             $discuss->body = $request->input('body');
             $discuss->subject = $request->input('subject');
             $discuss->save();
+            return redirect('/supervisor/discussion')->with('success','Discussion created');
         }
         else
         {
@@ -116,11 +117,12 @@ class CommentController extends Controller
             $discuss->body = $request->input('body');
             $discuss->subject = $request->input('subject');
             $discuss->save();
+            return redirect('/discussion')->with('success','Discussion created');
         }
        
       
         
-        return redirect('/discussion')->with('success','Discussion created');
+        
     }
     public function post($id,$student_id)
     {
