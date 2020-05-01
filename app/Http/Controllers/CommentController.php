@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Discussion;
+use App\Appointment;
+use App\Calendar as DBCalendar;
+use App\Studentlist;
 use App\Supervisor;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
 class CommentController extends Controller
 {
@@ -15,12 +19,50 @@ class CommentController extends Controller
     {
         if(Auth::guard('web')->check())
         {
-            $this->middleware('guest:web');
+            $this->middleware('guest:web', ['only' => ['discussion']]);
         }
         elseif (Auth::guard('supervisor')->check())
         {
-            $this->middleware('guest:supervisor');
+            $this->middleware('guest:supervisor', ['only' => ['svdisucssion', 'studentlist']]);
         }
+    }
+    public function studentlist()
+    {
+        $studentlist = Studentlist::where('super_matrik_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
+        $data = array(
+            'studentlist' => $studentlist,
+        );
+        return view('comment.index')->with($data);
+    }
+    public function svdiscussion($matrices_number)
+    {
+        if (Auth::guard('supervisor')->check())
+        {
+            $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
+            $discuss = Discussion::where('student_id','=',$matrices_number)->get();
+            $calendars = DBCalendar::where('matrik_id','=',$matrices_number)->get();
+            $calendar = [];
+            foreach($calendars as $row)
+            {
+                $calendar[] = \Calendar::event(
+                    $row->title,
+                    false,
+                    new \DateTime($row->start_date),
+                    new \DateTime($row->end_date),
+                    $row->id, //optional event ID
+                    [
+                        'color'=> $row->color,
+                    ]
+                );
+            }
+            $calendar = \Calendar::addEvents($calendar); 
+            $data = array(
+                'sv' => $sv,
+                'discuss' => $discuss,
+                'calendar' => $calendar,
+            );
+        }
+        return view('comment.svdiscussion')->with($data);
     }
     public function discussion()
     {
@@ -33,15 +75,9 @@ class CommentController extends Controller
                 'discuss' => $discuss,
             );
         }
-        elseif (Auth::guard('supervisor')->check())
-        {
-            $sv = Supervisor::find(Auth::guard('supervisor')->user()->id);
-            $discuss = Discussion::where('supervisor_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
-            $data = array(
-                'sv' => $sv,
-                'discuss' => $discuss,
-            );
-        }
+        $data = array(
+            'discuss' => $discuss,
+        );
         
        
         return view('comment.discussion')->with($data);
@@ -126,5 +162,26 @@ class CommentController extends Controller
         $comment = Comment::find($id);
         $comment->delete();
         return back();
+    }
+    public function calendar()
+    {
+        $calendars = DBCalendar::all();
+        $calendar = [];
+        foreach($calendars as $row)
+        {
+            $calendar[] = \Calendar::event(
+                $row->title,
+                true,
+                new \DateTime($row->start_date),
+                new \DateTime($row->end_date),
+                $row->id,
+                [
+                    'color' => $row->color,
+                ]
+                
+            ); 
+        }
+        $calendar = \Calendar::addEvents($calendar);
+        return view('comment.test')->with('calendar',$calendar);
     }
 }

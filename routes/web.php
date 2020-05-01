@@ -39,7 +39,7 @@ Route::resource('studentlists', 'StudentlistController');
 
 Route::resource('projects', 'ProjectController');
 Auth::routes();
-
+Route::get('test', 'CommentController@calendar');
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('discussion')->group(function(){
     Route::get('/', 'CommentController@discussion');
@@ -72,6 +72,8 @@ Route::prefix('supervisor')->group(function(){
     Route::get('/password/reset', 'Auth\SupervisorForgotPasswordController@showLinkRequestForm')->name('supervisor.password.request');
     Route::post('/password/reset', 'Auth\SupervisorResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\SupervisorResetPasswordController@showResetForm')->name('supervisor.password.reset');
-
+    Route::get('/list', 'CommentController@studentlist');
+    Route::get('/discussion', 'CommentController@studentlist');
+    Route::get('/discussion/{matrices_number}', 'CommentController@svdiscussion');
 
 });
