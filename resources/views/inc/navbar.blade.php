@@ -38,6 +38,9 @@
                     <li class="nav-item">
                         <a href="/approve">Approval</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/supervisor/discussion">Discussion</a>
+                    </li>
                 @endauth
 
                 {{-- Student only --}}
@@ -48,14 +51,11 @@
                     <li class="nav-item">
                         <a href="/upload">Approval</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/discussion">Discussion</a>
+                    </li>
                 @endauth
-                
-                @if (Auth::guard('web')->check() || Auth::guard('supervisor')->check())
-                
-                <li class="nav-item">
-                    <a href="/discussion">Discussion</a>
-                </li>
-                @endif
+            
                 
                 
             </ul>
