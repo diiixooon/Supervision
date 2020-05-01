@@ -41,6 +41,7 @@ Route::resource('projects', 'ProjectController');
 Auth::routes();
 Route::get('test', 'CommentController@calendar');
 // Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('discussion')->group(function(){
     Route::get('/', 'CommentController@discussion');
     Route::get('/{id}/{student_id}','CommentController@post');

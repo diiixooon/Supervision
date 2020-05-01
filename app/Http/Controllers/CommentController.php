@@ -28,11 +28,15 @@ class CommentController extends Controller
     }
     public function studentlist()
     {
-        $studentlist = Studentlist::where('super_matrik_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
-        $data = array(
-            'studentlist' => $studentlist,
-        );
-        return view('comment.index')->with($data);
+        if(Auth::guard('supervisor')->check())
+        {
+            $studentlist = Studentlist::where('super_matrik_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
+            $data = array(
+                'studentlist' => $studentlist,
+            );
+            return view('comment.index')->with($data);
+        }
+        
     }
     public function svdiscussion($matrices_number)
     {
@@ -61,8 +65,9 @@ class CommentController extends Controller
                 'discuss' => $discuss,
                 'calendar' => $calendar,
             );
+            return view('comment.svdiscussion')->with($data);
+
         }
-        return view('comment.svdiscussion')->with($data);
     }
     public function discussion()
     {
@@ -74,13 +79,10 @@ class CommentController extends Controller
                 'user' => $user,
                 'discuss' => $discuss,
             );
-        }
-        $data = array(
-            'discuss' => $discuss,
-        );
-        
-       
+            
         return view('comment.discussion')->with($data);
+        }       
+       
     }
     public function create()
     {
