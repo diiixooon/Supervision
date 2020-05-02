@@ -41,6 +41,7 @@
                     <li class="nav-item">
                         <a href="/supervisor/discussion">Discussion</a>
                     </li>
+                    
                 @endauth
 
                 {{-- Student only --}}

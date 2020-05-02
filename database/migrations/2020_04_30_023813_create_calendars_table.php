@@ -20,6 +20,9 @@ class CreateCalendarsTable extends Migration
             $table->dateTime('end_date');
             $table->string('matrik_id');
             $table->string('super_matrik_id');
+            $table->boolean('approve')->default(false);
+            $table->boolean('decline')->default(false);
+            $table->string('declinemessage');
             $table->string('color');
             $table->timestamps();
         });

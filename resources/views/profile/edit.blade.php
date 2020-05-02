@@ -10,6 +10,10 @@
         {{Form::label('matrik_number', 'Supervisor Matrik Number')}}
         {{Form::text('matrik_number', $sv->super_matrik_id, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
     </div>
+    <div class="form-group">
+      {{Form::label('room_location', 'Supervisor Room address')}}
+      {{Form::text('room_location', $sv->room_location, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
+    </div>
     <input type="hidden" name="lat" id="lat">
     <input type="hidden" name="lng" id="lng">
     {{Form::submit('Submit',['class' => 'btn btn-info'])}}

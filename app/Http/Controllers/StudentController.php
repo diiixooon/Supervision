@@ -48,6 +48,7 @@ class StudentController extends Controller
         $sv = Supervisor::find($id);
         $sv->name = $request->input('name');
         $sv->super_matrik_id = $request->input('matrik_number');
+        $sv->room_location = $request->input('room_location');
         $sv->lat = $request->input('lat');
         $sv->lng = $request->input('lng');
         $sv->update();

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <a href="/discussion/create" class="btn btn-info">Create discussion</a>
+    <a href="/supervisor/discussion/create/{{$matrices_number}}" class="btn btn-info">Create discussion</a>
+    <a href="/supervisor/appointment/{{$matrices_number}}" class="btn btn-info">Appointment</a>
     @foreach ($discuss as $item)
         <div class="well">
             <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
@@ -9,12 +10,14 @@
             {{$item->subject}}     
         </div>
     @endforeach
-@endsection
-@section('calendar')
     {!! $calendar->calendar() !!}
+    {!! $calendar->script() !!}
+@endsection
+
+@section('calendar')
+    
 @endsection
 
 @section('script')
-    {!! $calendar->script() !!}
 @endsection
 

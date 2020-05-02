@@ -12,6 +12,8 @@
             SV lat: {{$sv->lat}}
             <br>
             SV lng : {{$sv->lng}}
+            <br>
+            SV Room : {{$sv->room_location}}
         </h2>
         
     </div>

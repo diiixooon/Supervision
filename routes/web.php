@@ -50,6 +50,13 @@ Route::prefix('discussion')->group(function(){
     Route::get('/create','CommentController@create');
     Route::post('/create', 'CommentController@store');
     Route::delete('/{comment_id}','CommentController@deletecomment');
+    Route::get('appointment', 'CommentController@appointment');
+    Route::post('appointment', 'CommentController@storeappointment');
+    Route::get('/status','CommentController@status');
+    
+    Route::get('/status/edit/{id}', 'CommentController@editapproval');
+    Route::post('/status/edit/{id}', 'CommentController@updateappointment');
+    Route::delete('/status/delete/{id}', 'CommentController@deleteappointment');
 });
 
 Route::prefix('approve')->group(function(){
@@ -76,5 +83,7 @@ Route::prefix('supervisor')->group(function(){
     Route::get('/list', 'CommentController@studentlist');
     Route::get('/discussion', 'CommentController@studentlist');
     Route::get('/discussion/{matrices_number}', 'CommentController@svdiscussion');
-
+    Route::get('/discussion/create/{matrices_number}', 'CommentController@svcreate');
+    Route::get('/appointment/{matrices_number}', 'CommentController@approvaldateform');
+    Route::post('/appointment/{id}', 'CommentController@approvaldate');
 });

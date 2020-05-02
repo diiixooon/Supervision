@@ -15,27 +15,19 @@ class ApprovalController extends Controller
         $this->validate($request, [
             'document' => 'required',
             'fypdocument' => 'required|max:1000000',
-
         ]);
-//hi albert
-
         if($request->hasFile('fypdocument'))
         {
             // get file name with the extension
-            $fypdocumentWithExt = $request->file('fypdocument')->getClientOriginalName(); 
-            
+            $fypdocumentWithExt = $request->file('fypdocument')->getClientOriginalName();   
             // get file name
             $fypdocument = pathinfo($fypdocumentWithExt, PATHINFO_FILENAME);
-            //dd($approvalLetter);
             // get the file extension
             $fypdocumentextension = $request->file('fypdocument')->getClientOriginalExtension();
-           // dd($approvalletterextension);
             // file name to store
             $fypdocumentNameToStore  = $fypdocument.'_'.time().'.'.$fypdocumentextension;
-            //dd($approvalLetterNameToStore);
             //Upload image 
             $path = $request->file('fypdocument')->storeAs('public/fypdocument',$fypdocumentNameToStore);
-            //dd($path);
         }
 
         $user = User::find(Auth::user()->id);
