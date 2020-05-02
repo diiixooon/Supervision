@@ -31,8 +31,25 @@ class CommentController extends Controller
         if(Auth::guard('supervisor')->check())
         {
             $studentlist = Studentlist::where('super_matrik_id','=',Auth::guard('supervisor')->user()->super_matrik_id)->get();
+            $calendars = DBCalendar::where('super_matrik_id', '=',Auth::guard('supervisor')->user()->super_matrik_id)->where('approve','=','1')->get();
+            $calendar = [];
+            foreach($calendars as $row)
+            {
+                $calendar[] = \Calendar::event(
+                    $row->event_name,
+                    false,
+                    new \DateTime($row->start_date),
+                    new \DateTime($row->end_date),
+                    $row->id, //optional event ID
+                    [
+                        'color'=> $row->color,
+                    ]
+                );
+            }
+            $calendar = \Calendar::addEvents($calendar); 
             $data = array(
                 'studentlist' => $studentlist,
+                'calendar' => $calendar
             );
             return view('comment.index')->with($data);
         }
@@ -50,7 +67,7 @@ class CommentController extends Controller
             foreach($calendars as $row)
             {
                 $calendar[] = \Calendar::event(
-                    $row->title,
+                    $row->event_name,
                     false,
                     new \DateTime($row->start_date),
                     new \DateTime($row->end_date),

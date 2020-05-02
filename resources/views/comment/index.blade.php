@@ -8,4 +8,6 @@
 
         </div>        
     @endforeach
+    {!! $calendar->calendar() !!}
+    {!! $calendar->script() !!}
 @endsection
