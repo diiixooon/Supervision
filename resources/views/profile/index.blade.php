@@ -14,6 +14,8 @@
             SV lng : {{$sv->lng}}
             <br>
             SV Room : {{$sv->room_location}}
+            <br>
+            SV contact number : {{$sv->contact}}
         </h2>
         
     </div>

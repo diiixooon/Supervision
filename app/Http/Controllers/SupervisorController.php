@@ -26,4 +26,5 @@ class SupervisorController extends Controller
     {
         return view('supervisor');
     }
+    
 }

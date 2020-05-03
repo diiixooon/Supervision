@@ -24,6 +24,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/userprofile', 'StudentController@userprofile');
 Route::get('/userprofile/edit/{id}', 'StudentController@useredit');
 Route::post('/userprofile/edit/{id}', 'StudentController@userprofileedit');
+Route::get('contactsv', 'StudentController@svlocation');
 
 Route::get('/profile','StudentController@profile');
 Route::get('profile/edit/{id}', 'StudentController@edit');

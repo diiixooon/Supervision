@@ -48,6 +48,7 @@ class StudentController extends Controller
         $sv = Supervisor::find($id);
         $sv->name = $request->input('name');
         $sv->super_matrik_id = $request->input('matrik_number');
+        $sv->contact = $request->input('contact');
         $sv->room_location = $request->input('room_location');
         $sv->lat = $request->input('lat');
         $sv->lng = $request->input('lng');
@@ -78,13 +79,13 @@ class StudentController extends Controller
         $user->save();
         return redirect('/userprofile')->with('success', 'Update success');
     }
-    public function location()
+    public function svlocation()
     {
-        $sv = Supervisor::where('super_matrik_id','=', Auth::guard('web')->user()->super_matrik_id)->get();
+        $sv = Supervisor::where('super_matrik_id' ,'=' , Auth::user()->super_matrik_id)->get();
         $data = array(
             'sv' => $sv,
         );
-        return view('profile.location')->with($data);
+        return view('location.svlocation')->with($data);
     }
 
 }

@@ -21,22 +21,22 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.print.css" media="print"/>
 </head>
 <body>
+    @include('inc.navbar')
+    @yield('location')
+    
     <div id="app">
-        @include('inc.navbar')
         <div class="container">
             @include('inc.messages')
             @yield('content')
             @yield('test')
             @yield('calendar') 
             @yield('script')
-
         </div>
     </div>
           
 
 
-    @yield('location')
-
+   
 
 
     <!-- Scripts -->

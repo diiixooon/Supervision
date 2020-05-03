@@ -14,6 +14,10 @@
       {{Form::label('room_location', 'Supervisor Room address')}}
       {{Form::text('room_location', $sv->room_location, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
     </div>
+    <div class="form-group">
+      {{Form::label('contact', 'Supervisor Contact Number')}}
+      {{Form::text('contact', $sv->contact, ['class' => 'form-control','placeholder' => 'SV contact number'])}}
+    </div>
     <input type="hidden" name="lat" id="lat">
     <input type="hidden" name="lng" id="lng">
     {{Form::submit('Submit',['class' => 'btn btn-info'])}}
@@ -28,7 +32,7 @@
      * element that contains the map. */
     #map {
       height: 50%;
-      width: 50%;
+      width: 100%;
     }
     /* Optional: Makes the sample page fill the window. */
     html, body {
