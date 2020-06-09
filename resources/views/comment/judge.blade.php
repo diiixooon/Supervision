@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <small>Latest Update {{$approval->updated_at}}</small>
     <table class="table table-striped">
         <tr>
             <th>Document</th>
@@ -28,9 +29,11 @@
                 {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d1_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D1</i></button>
-                </a>
+                @if ($approval->d1 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d1_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D1</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>
@@ -54,9 +57,11 @@
                     {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d2_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D2</i></button>
-                </a>
+                @if ($approval->d2 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d2_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D2</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>
@@ -73,16 +78,19 @@
             </td>
             <td>
                 {{Form::open(['action' => ['ApprovalController@approvalfunc', $approval->id], 'method'=> 'POST'])}}
-                        <button name="d3approvebtn" id="approvebtn" type="submit" class="btn btn-primary" value="approve">Approve</button>
-                        <button name="d3declinebtn" id="declinebtn" type="submit" class="btn btn-primary" value="decline">Decline</button>
-                        <input type="hidden" name="hiddentext" value="3">
-                        {{Form::text('d3declinemessage', '', ['class' => 'form-control', 'placeholder' => 'Decline Message'])}}
-                    {{Form::close()}}
+                    <button name="d3approvebtn" id="approvebtn" type="submit" class="btn btn-primary" value="approve">Approve</button>
+                    <button name="d3declinebtn" id="declinebtn" type="submit" class="btn btn-primary" value="decline">Decline</button>
+                    <input type="hidden" name="hiddentext" value="3">
+                    {{Form::text('d3declinemessage', '', ['class' => 'form-control', 'placeholder' => 'Decline Message'])}}
+                {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d3_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D3</i></button>
-                </a>
+                @if ($approval->d3 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d3_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D3</i></button>
+                    </a>
+                @endif
+                
             </td>
             
         </tr>
@@ -106,9 +114,11 @@
                     {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d4_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D4</i></button>
-                </a>
+                @if ($approval->d4 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d4_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D4</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>
@@ -132,9 +142,11 @@
                     {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d5_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D5</i></button>
-                </a>
+                @if ($approval->d5 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d5_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D5</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>
@@ -158,9 +170,11 @@
                     {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d6_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D6</i></button>
-                </a>
+                @if ($approval->d6 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d6_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D6</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>
@@ -184,9 +198,11 @@
                     {{Form::close()}}
             </td>
             <td>
-                <a download href="/storage/fypdocument/{{$approval->d7_document}}">
-                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D7</i></button>
-                </a>
+                @if ($approval->d7 == 1)
+                    <a download href="/storage/fypdocument/{{$approval->d7_document}}">
+                        <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download"> Download D7</i></button>
+                    </a>
+                @endif
             </td>
             
         </tr>

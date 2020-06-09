@@ -8,7 +8,24 @@
 <div class="well">
     @if (count($comment) > 0)
     @foreach ($comment as $item)
+    {{count($comment)}} Comment
     <div class="well">
+
+        {{-- @if (Auth::guard('web')->check())
+            
+        @elseif(Auth::guard('supervisor')->check())
+            
+        @endif --}}
+        
+        @if (Auth::guard('web')->check())
+            @if($item->commenter_id == Auth::guard('web')->user()->matrik_id)
+                {{Auth::guard('web')->user()->name}}
+            @endif
+        @elseif(Auth::guard('supervisor')->check())        
+            @if($item->commented_id == Auth::guard('supervisor')->user()->super_matrik_id)
+                {{Auth::guard('supervisor')->user()->name}}
+            @endif
+        @endif
         {{$item->comment}}
 
         @if (Auth::guard('web')->check())
