@@ -37,6 +37,7 @@ Route::post('profile/edit/{id}','StudentController@editform');
 Route::get('/location','StudentController@location');
 
 
+
 Route::get('profile/create','StudentController@create');
 
 //Student List

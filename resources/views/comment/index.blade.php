@@ -30,10 +30,11 @@
             <br>
             Matrices number : {{$list->matrices_number}}
         </div>   
-        <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
-            {!! $calendar->script() !!}  
-        </div>   
+         
     @endforeach
+    <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
+      {!! $calendar->script() !!}  
+  </div>  
     <br>
 
 
