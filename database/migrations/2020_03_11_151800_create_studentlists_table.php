@@ -18,7 +18,7 @@ class CreateStudentlistsTable extends Migration
             $table->string('matrices_number');
             $table->string('super_matrik_id');
             $table->string('name');
-            $table->string('project_title');
+            $table->string('project_title')->default('NaN');
             $table->string('description');
             $table->timestamps();
         });

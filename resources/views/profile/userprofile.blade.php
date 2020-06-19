@@ -11,4 +11,5 @@
         </h2>
     </div>
         <a href="/userprofile/edit/{{$user->id}}" class="btn btn-info">Edit</a>
+        <a href="/userprofile/fyp">FYP details</a>
 @endsection
