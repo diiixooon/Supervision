@@ -24,28 +24,24 @@
 
     @foreach ($discuss as $item)
     <br>
-    <div class="wrapper">
+     <div class="wrapper">
         <div class="one"><div class="well">
-            Matrices Number : <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
+            {{-- Matrices Number : <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
             <br>
             Supervisor ID : {{$item->supervisor_id}}
             <br>
             Subject : {{$item->subject}}
             <br>
             Description : {!!$item->body!!} 
-        </div>
+        </div> --}}
         {{-- <a href="/discussion/create/" class="btn btn-info">Create discussion</a></div> --}}
         
-        <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
-            {!! $calendar->script() !!}
+        {{-- <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
+            {!! $calendar->script() !!} --}}
             {{-- <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
             <a href="discussion/status" class="btn btn-info">Appointment status</a></div> --}}
        
-      </div>
-      <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
-      <a href="discussion/status" class="btn btn-info">Appointment status</a>
-       --}}
-        {{-- {{-- <div class="well">
+
             Matrices Number : <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
             <br>
             Supervisor ID : {{$item->supervisor_id}}
@@ -54,19 +50,20 @@
             <br>
             Description : {!!$item->body!!} 
         </div>
-        <a href="/discussion/create/" class="btn btn-info">Create discussion</a>
+        @endforeach
         <hr>
         <br>
-    @endforeach
-    <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
-    <a href="discussion/status" class="btn btn-info">Appointment status</a>
+
+    <a href="/discussion/create/" class="btn btn-info">Create discussion</a></div>
+    
     
     <br>
     
-    {{-- <div id='calendar' style="width:65%">{!! $calendar->calendar() !!}
+    <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
         {!! $calendar->script() !!}
     </div>
-         --}}
+    <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
+    <a href="discussion/status" class="btn btn-info">Appointment status</a>    
 @endsection
 @section('calendar')
     {!! $calendar->calendar() !!}

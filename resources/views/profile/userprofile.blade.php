@@ -9,10 +9,11 @@
             <div>Student Matrik : 
             {{$user->matrik_id}}</div>
             <br>
-            <div>Project Title : 
+            <a href="/userprofile/fyp">FYP details</a>
+            {{-- <div>Project Title : 
             {{$project_title}}</div>
             <br>
-            <div>Project Description : {!!$project_description!!}</div>
+            <div>Project Description : {!!$project_description!!}</div> --}}
     </div>
         <a href="/userprofile/edit/{{$user->id}}" class="btn btn-info">Edit</a>
 @endsection

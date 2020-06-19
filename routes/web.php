@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'StudentController@userprofile')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/', 'PagesController@index');
+
+
+Route::get('/userprofile/fyp', 'StudentController@userfyp');
 
 Route::get('/userprofile', 'StudentController@userprofile');
 Route::get('/userprofile/edit/{id}', 'StudentController@useredit');

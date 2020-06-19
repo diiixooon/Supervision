@@ -68,6 +68,7 @@ class StudentController extends Controller
             $project_title = $item->project_title;
         }
         // dd($project_title);
+        
         $data = array(
             'user' => $user,
             'project_title' => $project_title,
@@ -95,6 +96,28 @@ class StudentController extends Controller
             'sv' => $sv,
         );
         return view('location.svlocation')->with($data);
+    }
+    public function userfyp()
+    {
+        $studentlist = Studentlist::where("matrices_number",'=', Auth::guard('web')->user()->matrik_id)->get();
+        foreach($studentlist as $item)
+        {
+            $student = $item->id; 
+            $svid = $item->super_matrik_id;
+        }
+        $sv = Supervisor::where('super_matrik_id','=', $svid)->get();
+        foreach($sv as $svid)
+        {
+            $newsvid = $svid->id;
+        }
+        $svprofile = Supervisor::find($newsvid);
+        $profile = Studentlist::find($student);
+        $data = array(
+            'sv_name' => $svprofile->name,
+            'project_title' => $profile->project_title,
+            'project_description' => $profile->description,
+        );
+        return view('profile.userfyp')->with($data);
     }
 
 }
