@@ -40,7 +40,7 @@
         @endforeach
         <a href="/discussion/create/" class="btn btn-info">Create discussion</a>
     </div>
-    
+
     {{-- calendar --}}
     <div class="col-xs-6 col-sm-6">
         <div class="two" id='calendar' style="width:80%">
@@ -48,7 +48,7 @@
             {!! $calendar->script() !!}  
         </div> 
         <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
-        <a href="discussion/status" class="btn btn-info">Appointment status</a>  
+        <a href="/discussion/status" class="btn btn-info">Appointment status</a>  
     </div>
 </div>
     {{-- next col-xs-6 --}}
