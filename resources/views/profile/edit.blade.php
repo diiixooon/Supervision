@@ -1,47 +1,25 @@
 @extends('layouts.app')
 
-@section('content')
-    {{Form::open(['action'=> ['StudentController@editform', $sv->id], 'method' => 'post'])}}
-    <div class="form-group">
-        {{Form::label('name', 'Author')}}
-        {{Form::text('name', $sv->name, ['class' => 'form-control','placeholder' => 'Author'])}}
-    </div>
-    <div class="form-group">
-        {{Form::label('matrik_number', 'Supervisor Matrik Number')}}
-        {{Form::text('matrik_number', $sv->super_matrik_id, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
-    </div>
-    <div class="form-group">
-      {{Form::label('room_location', 'Supervisor Room address')}}
-      {{Form::text('room_location', $sv->room_location, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
-    </div>
-    <div class="form-group">
-      {{Form::label('contact', 'Supervisor Contact Number')}}
-      {{Form::text('contact', $sv->contact, ['class' => 'form-control','placeholder' => 'SV contact number'])}}
-    </div>
-    <input type="hidden" name="lat" id="lat">
-    <input type="hidden" name="lng" id="lng">
-    {{Form::submit('Submit',['class' => 'btn btn-info'])}}
-    {{Form::close()}}
-@endsection
-
 @section('location')
+<h1>Edit Supervisor Profile</h1>
+<hr>
 
-<div id="map"></div>
 <style>
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
     #map {
       height: 50%;
-      width: 100%;
+      width: 80%;
+      margin: inherit;
     }
     /* Optional: Makes the sample page fill the window. */
     html, body {
       height: 100%;
-      margin: 0;
-      padding: 0;
+      margin: auto;
+      padding: auto;
     }
   </style>
-
+<div id="map"></div>
 <script>
    
   function initMap() {
@@ -72,3 +50,29 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi8oD2FnMmsvfKddQcNYRC9qiSxiYGmG4&callback=initMap&libraries=geometry"
     ></script>
 @endsection
+   
+@section('content')
+<hr>
+{{Form::open(['action'=> ['StudentController@editform', $sv->id], 'method' => 'post'])}}
+    <div class="form-group">
+        {{Form::label('name', 'Author')}}
+        {{Form::text('name', $sv->name, ['class' => 'form-control','placeholder' => 'Author'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('matrik_number', 'Supervisor Matrik Number')}}
+        {{Form::text('matrik_number', $sv->super_matrik_id, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
+    </div>
+    <div class="form-group">
+      {{Form::label('room_location', 'Supervisor Room address')}}
+      {{Form::text('room_location', $sv->room_location, ['class' => 'form-control','placeholder' => 'Name the subject'])}}
+    </div>
+    <div class="form-group">
+      {{Form::label('contact', 'Supervisor Contact Number')}}
+      {{Form::text('contact', $sv->contact, ['class' => 'form-control','placeholder' => 'SV contact number'])}}
+    </div>
+    <input type="hidden" name="lat" id="lat">
+    <input type="hidden" name="lng" id="lng">
+    {{Form::submit('Submit',['class' => 'btn btn-info'])}}
+    {{Form::close()}}
+@endsection
+

@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Supervisor profile</h2>
+    <h1>Supervisor profile</h1>
+    <hr>
     <div class="well">
-        <h2>
-            Name : {{$sv->name}}
+        
+            <div>Name : {{$sv->name}}</div>
             <br>
-            Supervisor Matrik:
-            {{$sv->super_matrik_id}}
+            <div>Supervisor Matrik :
+            {{$sv->super_matrik_id}}</div>
             <br>
-            SV lat: {{$sv->lat}}
+            <div>SV lat: {{$sv->lat}}</div>
             <br>
-            SV lng : {{$sv->lng}}
+            <div>SV lng : {{$sv->lng}}</div>
             <br>
-            SV Room : {{$sv->room_location}}
+            <div>SV Room : {{$sv->room_location}}</div>
             <br>
-            SV contact number : {{$sv->contact}}
-        </h2>
+            <div>SV contact number : {{$sv->contact}}</div>
+        
         
     </div>
+    <hr>
         <a href="/profile/edit/{{$sv->id}}" class="btn btn-info">Edit</a>
 @endsection

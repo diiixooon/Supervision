@@ -11,11 +11,9 @@
               <div>Project Title :  {!!$studentlist->project_title!!}</div>
             </div>    
         @endforeach
-        <hr>
         <a href="/studentlists/create" class="btn btn-primary">Create</a>
     @else
         <p>No students found</p>
-        <hr>
         <a href="/studentlists/create" class="btn btn-primary">Create</a>
     @endif
 @endsection

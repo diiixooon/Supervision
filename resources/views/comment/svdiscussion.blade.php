@@ -1,17 +1,27 @@
 @extends('layouts.app')
 @section('content')
-    <a href="/supervisor/discussion/create/{{$matrices_number}}" class="btn btn-info">Create discussion</a>
-    <a href="/supervisor/appointment/{{$matrices_number}}" class="btn btn-info">Appointment</a>
+
+<h1>Discussion</h1>
+<hr>
+    
     @foreach ($discuss as $item)
-        <div class="well">
-            <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
-            {{$item->supervisor_id}}
-            {{$item->body}}
-            {{$item->subject}}     
+<div class="well">
+        Student Matrics Number : <a href="/discussion/{{$item->id}}/{{$item->student_id}}">{{$item->student_id}}</a>
+        <br>
+        Supervisor ID : {{$item->supervisor_id}}
+        <br>
+        Subject : {{$item->subject}} 
+        <br>
+        Description : {!!$item->body!!}
         </div>
-    @endforeach
-    {!! $calendar->calendar() !!}
-    {!! $calendar->script() !!}
+         @endforeach
+        <a href="/supervisor/discussion/create/{{$matrices_number}}" class="btn btn-info">Create discussion</a>
+        
+        <div id='calendar' style="width:100%">{!! $calendar->calendar() !!}
+            {!! $calendar->script() !!}
+            <a href="/supervisor/appointment/{{$matrices_number}}" class="btn btn-info">Appointment</a>
+            
+        </div>
 @endsection
 
 @section('calendar')

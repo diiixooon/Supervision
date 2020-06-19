@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{$sv_name}}</h1>
-    <h1>{{$project_title}}</h1>
-    <h1>{{$project_description}}</h1>
+<h1>Project Details</h1>
+<hr>
+<div class="well">
+    Supervisor name : {{$sv_name}}
+    <br>
+    Project Title : {{$project_title}}
+    <br>
+    Project Desription : {!!$project_description!!}
+</div>
+    
 @endsection

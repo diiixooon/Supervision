@@ -17,9 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'StudentController@userprofile')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::get('/', 'PagesController@index');
+
+
+Route::get('/userprofile/fyp', 'StudentController@userfyp');
 
 Route::get('/userprofile', 'StudentController@userprofile');
 Route::get('/userprofile/edit/{id}', 'StudentController@useredit');
@@ -76,7 +79,7 @@ Route::resource('posts', 'PostsController');
 Route::prefix('supervisor')->group(function(){
     Route::get('/login','Auth\SupervisorLoginController@showLoginForm')->name('supervisor.login');
     Route::post('/login','Auth\SupervisorLoginController@login')->name('supervisor.login.submit');
-    Route::get('/', 'SupervisorController@index')->name('supervisor.dashboard');
+    Route::get('/', 'StudentlistController@index')->name('supervisor.dashboard');
     Route::get('/logout', 'Auth\SupervisorLoginController@logout')->name('supervisor.logout');
     Route::get('/analytics', 'GraphController@index');
     Route::post('/password/email', 'Auth\SupervisorForgotPasswordController@sendResetLinkEmail')->name('supervisor.password.email');

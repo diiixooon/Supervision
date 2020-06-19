@@ -1,22 +1,28 @@
 @extends('layouts.app')
 
 @section('location')
-<div id="map"></div>
+<h1>Supervisor Location and Contact</h1>
+<hr>
 <style>
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
     #map {
       height: 50%;
-      width: 100%;
+      width: 80%;
+      margin: inherit;
     }
     /* Optional: Makes the sample page fill the window. */
     html, body {
       height: 100%;
-      margin: 0;
-      padding: 0;
+      margin: auto;
+      padding: auto;
     }
+    
   </style>
+
 @foreach ($sv as $item)
+<div id="map"></div>
+
     <script>var svlat = {{$item->lat}}</script>
     <script>var svlng = {{$item->lng}}</script>
 @endforeach
@@ -47,13 +53,19 @@
 @endsection
 
 @section('content')
+<hr>
     @foreach ($sv as $item)
-        <h2> Supervisor Room: {{$item->room_location}}</h2>
-        <h2>Supervisor Contact number : {{$item->contact}}</h2>
-        <h2>Supervisor Email : {{$item->email}}</h2>
-        <h2>Supervisor location : Lat :{{$item->lat}} Lng: {{$item->lng}}</h2>
-
-
+    <div class="well">
+        <div> Supervisor Room: {{$item->room_location}}</div>
+        <br>
+        <div>Supervisor Contact number : {{$item->contact}}</div>
+        <br>
+        <div>Supervisor Email : {{$item->email}}</div>
+        <br>
+        <div>Supervisor location (latitude) : {{$item->lat}}</div>
+        <br>
+        <div>Supervisor location (longitude) : {{$item->lng}}</div>
+      </div>
 
         @endforeach
 @endsection

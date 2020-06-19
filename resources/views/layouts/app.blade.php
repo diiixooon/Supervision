@@ -43,6 +43,22 @@
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script>
+
+<style>
+    .btn {
+      background-color: #FF8C00;
+      border: none;
+      color: white;
+      padding: 7px 15px;
+      text-align: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      opacity: 1;
+      transition: 0.3s;
+    }
+    p {outline-color:#FF8C00;}
+    p.solid {outline-style: solid;}
     
+</style>
 </body>
 </html>
