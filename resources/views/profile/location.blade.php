@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('location')
+
 <div id="map"></div>
 <style>
     /* Always set the map height explicitly to define the size of the div

@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Student profile</h2>
+    <h1>Student Profile</h1>
+    <hr>
     <div class="well">
-        <h2>
-            Name : {{$user->name}}
+            <div> Name : {{$user->name}} </div>
             <br>
-            Student Matrik:
-            {{$user->matrik_id}}
-        </h2>
+            <div>Student Matrik : 
+            {{$user->matrik_id}}</div>
+            <br>
+            <div>Project Title : 
+            {{$project_title}}</div>
+            <br>
+            <div>Project Description : {!!$project_description!!}</div>
     </div>
         <a href="/userprofile/edit/{{$user->id}}" class="btn btn-info">Edit</a>
 @endsection

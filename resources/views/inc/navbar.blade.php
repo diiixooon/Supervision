@@ -55,23 +55,8 @@
                         <a href="/discussion">Discussion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/discussion">Discussion</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="/contactsv">Contact</a>
                     </li>
-                @endauth
-                @auth
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
                 @endauth
             </ul>
 

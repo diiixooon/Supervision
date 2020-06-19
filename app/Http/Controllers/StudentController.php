@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Supervisor;
+use App\Studentlist;
 
 class StudentController extends Controller
 {
@@ -61,8 +62,16 @@ class StudentController extends Controller
     public function userprofile()
     {
         $user = User::find(Auth::guard('web')->user()->id);
+        $project = Studentlist::where("matrices_number", "=" , Auth::guard('web')->user()->matrik_id)->get();
+        foreach($project as $item){
+            $project_description = $item->description;
+            $project_title = $item->project_title;
+        }
+        // dd($project_title);
         $data = array(
             'user' => $user,
+            'project_title' => $project_title,
+            'project_description' => $project_description,
         );
         return view('profile.userprofile')->with($data);
     }

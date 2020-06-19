@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<h1>Edit Student profile</h1>
+<hr>
     {{Form::open(['action'=> ['StudentController@userprofileedit', $user->id], 'method' => 'post'])}}
     <div class="form-group">
         {{Form::label('name', 'Author')}}

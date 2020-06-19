@@ -75,7 +75,7 @@ Route::resource('posts', 'PostsController');
 Route::prefix('supervisor')->group(function(){
     Route::get('/login','Auth\SupervisorLoginController@showLoginForm')->name('supervisor.login');
     Route::post('/login','Auth\SupervisorLoginController@login')->name('supervisor.login.submit');
-    Route::get('/', 'SupervisorController@index')->name('supervisor.dashboard');
+    Route::get('/', 'StudentlistController@index')->name('supervisor.dashboard');
     Route::get('/logout', 'Auth\SupervisorLoginController@logout')->name('supervisor.logout');
     Route::get('/analytics', 'GraphController@index');
     Route::post('/password/email', 'Auth\SupervisorForgotPasswordController@sendResetLinkEmail')->name('supervisor.password.email');

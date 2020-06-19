@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<h1>Discussion</h1>
+<hr>
 <div class="well">
-    {{$discuss->subject}}
-    {{$discuss->body}}
+    <div>Subject : {{$discuss->subject}}</div>
+    <div>Description : {!!$discuss->body!!}</div>
 </div>
 <div class="well">
     @if (count($comment) > 0)

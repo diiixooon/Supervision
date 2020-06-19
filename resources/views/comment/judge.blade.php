@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <small>Latest Update {{$approval->updated_at}}</small>
+<h1>Approval</h1>
+<br>
     <table class="table table-striped">
         <tr>
             <th>Document</th>
             <th>Status</th>
-            <th>Download</th>
-            <th>Approval</th>            
+            <th>Approval</th>
+            <th>Download</th>            
         </tr>
         <tr>
             <td>
@@ -207,4 +208,5 @@
             
         </tr>
     </table>
+    <small>Latest Update {{$approval->updated_at}}</small>
 @endsection 

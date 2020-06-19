@@ -18,7 +18,7 @@
                 @elseif($approval->d1_decline == 1)
                     Declined! {{$approval->d1declinemessage}}
                 @elseif($approval->d1 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -34,7 +34,7 @@
                 @elseif($approval->d2_decline == 1)
                     Declined! {{$approval->d2declinemessage}}
                 @elseif($approval->d2 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -50,7 +50,7 @@
                 @elseif($approval->d3_decline == 1)
                     Declined! {{$approval->d3declinemessage}}
                 @elseif($approval->d3 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -67,7 +67,7 @@
                 @elseif($approval->d4_decline == 1)
                     Declined! {{$approval->d4declinemessage}}
                 @elseif($approval->d4 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -84,7 +84,7 @@
                 @elseif($approval->d5_decline == 1)
                     Declined! {{$approval->d5declinemessage}}
                 @elseif($approval->d5 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -101,7 +101,7 @@
                 @elseif($approval->d6_decline == 1)
                     Declined! {{$approval->d6declinemessage}}
                 @elseif($approval->d6 == 0)
-                    NaN
+                Not Available
                 @else
                     Pending
                 @endif
@@ -117,7 +117,7 @@
                 @elseif($approval->d7_decline == 1)
                     Declined! {{$approval->d7declinemessage}}
                 @elseif($approval->d7 == 0)
-                    NaN
+                    Not Available
                 @else
                     Pending
                 @endif
@@ -131,6 +131,7 @@
     {{Form::label('fypdocument', 'Upload Your Document')}}
     {{Form::file('fypdocument')}}
 
+    <br>
     {{Form::submit('Submit', ['class' => 'btn btn-info'])}}
     {{Form::close()}}
 @endsection
