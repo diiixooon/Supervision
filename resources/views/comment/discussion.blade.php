@@ -47,6 +47,7 @@
             {!! $calendar->calendar() !!}
             {!! $calendar->script() !!}  
         </div> 
+        <br>
         <a href="/discussion/appointment" class="btn btn-info">Book Appointment</a>
         <a href="/discussion/status" class="btn btn-info">Appointment status</a>  
     </div>

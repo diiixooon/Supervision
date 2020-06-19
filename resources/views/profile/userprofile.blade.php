@@ -16,5 +16,4 @@
             <div>Project Description : {!!$project_description!!}</div> --}}
     </div>
         <a href="/userprofile/edit/{{$user->id}}" class="btn btn-info">Edit</a>
-        <a href="/userprofile/fyp">FYP details</a>
 @endsection

@@ -14,6 +14,7 @@
 {{Form::label('end_date', 'Enter Event End Date')}}
 <input type="datetime-local" class="form-control" name="end_date" />
 
+<br>
 {{Form::submit('Submit', ['class' => 'btn btn-primary'] )}}
    
 {{Form::close()}}

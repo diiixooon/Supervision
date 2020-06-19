@@ -21,21 +21,28 @@
 }
 
 </style>
+
+<div class="row">
+  {{-- discussion --}}
+  <div class="col-xs-6 col-sm-6">
     @foreach ($studentlist as $list)
-    <br>
-    <div class="wrapper">
-        <div class="one">
-        <div class="well">
+    <div class="one">
+      <div class="well">
+
             Name : <a href="/supervisor/discussion/{{$list->matrices_number}}">{{$list->name}}</a>
             <br>
             Matrices number : {{$list->matrices_number}}
         </div>   
-         
+    </div>   
     @endforeach
-    <div class="two" id='calendar' style="width:100%">{!! $calendar->calendar() !!}
+  </div>
+  <div class="col-xs-6 col-sm-6">
+    <div class="two" id='calendar' style="width:80%">
+      {!! $calendar->calendar() !!}
       {!! $calendar->script() !!}  
   </div>  
     <br>
-
+  </div>
+</div>
 
 @endsection

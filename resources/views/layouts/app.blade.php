@@ -56,8 +56,13 @@
       opacity: 1;
       transition: 0.3s;
     }
+
+    
+
     p {outline-color:#FF8C00;}
     p.solid {outline-style: solid;}
+
+    
     
 </style>
 </body>

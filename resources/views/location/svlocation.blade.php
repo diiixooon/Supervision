@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('location')
+<div class="container"> 
 <h1>Supervisor Location and Contact</h1>
+</div>
+
 <hr>
 <style>
     /* Always set the map height explicitly to define the size of the div
@@ -53,7 +56,7 @@
 @endsection
 
 @section('content')
-<hr>
+<br>
     @foreach ($sv as $item)
     <div class="well">
         <div> Supervisor Room: {{$item->room_location}}</div>

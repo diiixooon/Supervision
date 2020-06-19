@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('location')
+<div class="container">
 <h1>Edit Supervisor Profile</h1>
+</div>
 <hr>
 
 <style>
@@ -52,7 +54,7 @@
 @endsection
    
 @section('content')
-<hr>
+<br>
 {{Form::open(['action'=> ['StudentController@editform', $sv->id], 'method' => 'post'])}}
     <div class="form-group">
         {{Form::label('name', 'Author')}}
